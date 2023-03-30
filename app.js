@@ -268,13 +268,31 @@ const data = [
   },
 ];
 
-let productList = document.getElementById("list");
-data.forEach((item) => {
-  const li = document.createElement("li");
-  li.innerHTML = item.title;
-  productList.appendChild(li);
-});
+// let product = document.getElementById("productCard");
+// let productTitle = document.getElementById("title");
+// let productPrice = document.getElementById("price");
+// let productDescription = document.getElementById("description");
 
-const btn = document.createElement("button");
-btn.innerHTML = "Buy";
-document.body.appendChild(btn);
+data.forEach((item) => {
+  //create product card
+  const productCard = document.createElement("div");
+  productCard.setAttribute("class", "product-card");
+
+  // product Title and price
+  productCard.innerHTML = `${item.title} $${item.price}`;
+
+  //product Image
+  const productImage = document.createElement("img");
+  productImage.setAttribute("class", "img");
+  productImage.setAttribute("src", `${item.image}`);
+  productCard.appendChild(productImage);
+
+  //buy button
+  const btn = document.createElement("button");
+  btn.innerHTML = "Buy";
+  productCard.appendChild(btn)
+
+  //append to body
+  document.body.appendChild(productCard);
+  
+});
