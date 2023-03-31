@@ -268,10 +268,18 @@ const data = [
   },
 ];
 
-// let product = document.getElementById("productCard");
-// let productTitle = document.getElementById("title");
-// let productPrice = document.getElementById("price");
-// let productDescription = document.getElementById("description");
+//get price of individual item and store it
+const getPrice = () => {
+  for (let value of Object.values(data)) {
+    const currentTotal = localStorage.setItem(value, JSON.stringify(value.price))
+    console.log(currentTotal)
+  }
+};
+
+const handleBuy = () => {
+  console.log("it's clicked");
+  getPrice();
+};
 
 data.forEach((item) => {
   //create product card
@@ -290,9 +298,9 @@ data.forEach((item) => {
   //buy button
   const btn = document.createElement("button");
   btn.innerHTML = "Buy";
-  productCard.appendChild(btn)
-
+  productCard.appendChild(btn);
+  btn.addEventListener("click", handleBuy);
+  
   //append to body
   document.body.appendChild(productCard);
-  
 });
